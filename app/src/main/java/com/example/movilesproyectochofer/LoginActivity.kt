@@ -5,17 +5,9 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
-import com.example.movilesproyectochofer.ApiService
-import com.example.movilesproyectochofer.PedidoActivity
-import com.example.movilesproyectochofer.R
-import com.example.movilesproyectochofer.RegisterActivity
-import com.example.movilesproyectochofer.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

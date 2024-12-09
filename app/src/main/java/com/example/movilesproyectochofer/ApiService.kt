@@ -6,7 +6,6 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
-import retrofit2.http.Path
 
 interface ApiService {
 
@@ -29,14 +28,6 @@ interface ApiService {
         val restaurant_id: Int,
         val image: String
     )
-
-    data class Carrito(
-        val product_id: Int,
-        var qty: Int,
-        val price:String
-    )
-
-
     data class Pedido(
         val id: Int,
         val user_id: Int,
@@ -49,7 +40,7 @@ interface ApiService {
         val status: String,
         val created_at: String,
         val delivery_proof: String,
-        val order_details: List<Detalle> // Asegúrate de que el nombre coincida con la respuesta de la API
+        val order_details: List<Detalle>
     )
     data class Detalle(
         val id: Int,

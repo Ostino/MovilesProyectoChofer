@@ -8,21 +8,17 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
-import com.example.movilesproyectochofer.LoginActivity
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Eliminar el token si ya existe
         clearToken()
 
-        // Verificar si el token existe
         if (!isUserLoggedIn()) {
-            // Redirigir al LoginActivity si no hay token
             startActivity(Intent(this, LoginActivity::class.java))
-            finish() // Evita que el usuario vuelva a esta actividad con el botón "Atrás"
+            finish()
             return
         }
 
@@ -35,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Método para verificar si el usuario está autenticado
     private fun isUserLoggedIn(): Boolean {
         val sharedPreferences = EncryptedSharedPreferences.create(
             "auth_prefs",
@@ -48,7 +43,6 @@ class MainActivity : AppCompatActivity() {
         return !token.isNullOrEmpty()
     }
 
-    // Método para eliminar el token si existe
     private fun clearToken() {
         val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
         val sharedPreferences = EncryptedSharedPreferences.create(
@@ -58,6 +52,6 @@ class MainActivity : AppCompatActivity() {
             EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
             EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
         )
-        sharedPreferences.edit().remove("access_token").apply() // Eliminar el token
+        sharedPreferences.edit().remove("access_token").apply()
     }
 }
